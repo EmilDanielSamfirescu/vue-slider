@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background-color: #000;
+}
 
 .container {
     height: 100vh;
@@ -16,6 +19,7 @@
     width: 700px;
     height: 300px;
     position: relative;
+    
 }
 
 .item img {
