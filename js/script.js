@@ -28,7 +28,12 @@ const {createApp} = Vue;
             }
         },
         methods: {
-
+            nextButton (){
+                console.log(`ciao`)
+            },
+            prevButton (){
+                console.log(`ciaone`)
+            }
         }
     }).mount(`#app`)
 
