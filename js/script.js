@@ -2,6 +2,7 @@ const {createApp} = Vue;
     createApp({
         data(){
             return {
+                count: 0,
                 slides: [
                     {
                         image: 'img/01.webp',
@@ -29,15 +30,42 @@ const {createApp} = Vue;
         },
         methods: {
             nextButton (){
-                console.log(`ciao`)
+                // console.log(`ciao`);
+                if (this.count < this.slides.length - 1){
+                    this.count++;
+                } else {
+                    this.count = 0;
+                }
             },
             prevButton (){
-                console.log(`ciaone`)
-            }
+                // console.log(`ciaone`);
+                if (this.count > 0){
+                this.count--;
+                } else {
+                this.count = this.slides.length - 1;
+                }
+            },
+            activeIndex(i) {
+                // return (index == count ? `active` : ``);
+                if(i == this.count) {
+                    return "active";
+                } else {
+                    return " "
+                }
+            },
+            // changeImg(i){
+            //     console.log(i);
+            //     this.counter = i;
+            // }
         }
-    }).mount(`#app`)
+    }).mount(`#app`);
 
-console.log();
+
+
+
+
+
+
 console.log();
 console.log();
 console.log();
