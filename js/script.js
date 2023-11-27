@@ -3,6 +3,7 @@ const {createApp} = Vue;
         data(){
             return {
                 count: 0,
+                autoplay: null,
                 slides: [
                     {
                         image: 'img/01.webp',
@@ -29,51 +30,74 @@ const {createApp} = Vue;
             }
         },
         methods: {
-            nextButton (){
-                // console.log(`ciao`);
-                if (this.count < this.slides.length - 1){
+            nextButton(){
+                // console.log('click next');
+                if(this.count < this.slides.length - 1){
                     this.count++;
                 } else {
                     this.count = 0;
                 }
+
             },
-            prevButton (){
-                // console.log(`ciaone`);
-                if (this.count > 0){
-                this.count--;
+            prevButton(){
+                // console.log('click prev');
+                if(this.count > 0){
+                    this.count--;
                 } else {
-                this.count = this.slides.length - 1;
+                    this.count = this.slides.length - 1;
                 }
             },
-            activeIndex(i) {
-                // return (index == count ? `active` : ``);
-                if(i == this.count) {
-                    return "active";
-                } else {
-                    return " "
-                }
+            //click sulla singola immagine piccola e appare quella grande
+            clickThumb(i){
+                // console.log("cliccata", i);
+                return this.count = i;
             },
-            // changeImg(i){
-            //     console.log(i);
-            //     this.counter = i;
-            // }
+            stopAutoPlay(){
+                console.log("stop");
+                clearInterval(this.autoplay);
+                this.autoplay = null;
+
+            },
+            restartAutoPlay(){
+                console.log("start");
+                this.autoplay = setInterval(this.nextButton, 1000);
+            
+            },
+
+        },
+        created(){
+            this.autoplay = setInterval(this.nextButton, 1000);
         }
     }).mount(`#app`);
 
 
 
 
-
-
-
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
+    // nextButton (){
+    //     // console.log(`ciao`);
+    //     if (this.count < this.slides.length - 1){
+    //         this.count++;
+    //     } else {
+    //         this.count = 0;
+    //     }
+    // },
+    // prevButton (){
+    //     // console.log(`ciaone`);
+    //     if (this.count > 0){
+    //     this.count--;
+    //     } else {
+    //     this.count = this.slides.length - 1;
+    //     }
+    // },
+    // activeIndex(i) {
+    //     // return (index == count ? `active` : ``);
+    //     if(i == this.count) {
+    //         return "active";
+    //     } else {
+    //         return " "
+    //     }
+    // },
+    // changeImg(i){
+    //     console.log(i);
+    //     this.counter = i;
+    // }
